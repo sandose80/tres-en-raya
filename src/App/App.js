@@ -12,18 +12,33 @@ injectGlobal`
   * { box-sizing: border-box }
   body { margin: 0 }
 `;
-
 class App extends Component {
-  state = initialState;
+  constructor() {
+    super();
+    this.state = initialState;
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(row, column) {
+    const board = this.state.board.slice();
+    const { player } = this.state;
+    board[row][column] = player;
+    this.setState({
+      board,
+    });
+  }
+
   render() {
+    const { board, player, isGameOver } = this.state;
     return (
       <Main>
         <Header appTitle={APP_TITLE} />
         <Contents>
           <Game
-            board={this.state.board}
-            player={this.state.player}
-            isGameOver={this.state.isGameOver}
+            board={board}
+            player={player}
+            isGameOver={isGameOver}
+            clickHandler={this.handleClick}
           />
         </Contents>
       </Main>

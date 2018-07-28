@@ -18,8 +18,10 @@ const StyledButton = styled.button`
   text-align: center;
 `;
 
-const Tile = ({ row, column, value }) => (
-  <StyledButton>
+const Tile = ({
+  row, column, value, clickHandler,
+}) => (
+  <StyledButton onClick={() => clickHandler(row, column)}>
     R:{row}, C:{column}, V:{value}
   </StyledButton>
 );
@@ -28,6 +30,7 @@ Tile.propTypes = {
   row: PropTypes.number.isRequired,
   column: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 export default Tile;
