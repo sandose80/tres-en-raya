@@ -14,8 +14,8 @@ const StyledHeader = styled.header`
 const StyledLogo = styled(DiceThree)`
   display: inline-block;
   padding-right: 12px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 `;
 
 const StyledH1 = styled.h1`
