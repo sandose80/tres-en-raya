@@ -5,7 +5,7 @@ import GameStatus from './GameStatus';
 
 const InfoBar = ({ currentPlayer, isGameOver = false, resetHandler }) => (
   <Fragment>
-    <CurrentPlayer player={currentPlayer} />
+    <CurrentPlayer player={currentPlayer} isGameOver={isGameOver} />
     <GameStatus isGameOver={isGameOver} resetHandler={resetHandler} />
   </Fragment>
 );

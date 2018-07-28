@@ -85,7 +85,11 @@ class App extends Component {
 
     let nextPlayer;
     if (winner == null) {
-      nextPlayer = player === 'X' ? 'O' : 'X';
+      if (voidCount === 0) {
+        nextPlayer = '-';
+      } else {
+        nextPlayer = player === 'X' ? 'O' : 'X';
+      }
     } else {
       nextPlayer = player;
     }

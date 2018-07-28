@@ -2,6 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+// const StyledTileInfo = styled.p`
+//   font-size: 14px;
+// `;
+
+// const TileInfo = ({ row, column, value }) => (
+//   <StyledTileInfo>
+//     R: {row}, C: {column}, V: {value}
+//   </StyledTileInfo>
+// );
+
+// TileInfo.propTypes = {
+//   row: PropTypes.number.isRequired,
+//   column: PropTypes.number.isRequired,
+//   value: PropTypes.string,
+// };
+
 const StyledButton = styled.button`
   background: #fff;
   border: 1px solid #999;
@@ -17,27 +33,16 @@ const StyledButton = styled.button`
   text-align: center;
 `;
 
-const StyledTileInfo = styled.p`
-  font-size: 14px;
-`;
-
-const TileInfo = ({ row, column, value }) => (
-  <StyledTileInfo>
-    R: {row}, C: {column}, V: {value}
-  </StyledTileInfo>
-);
-
-TileInfo.propTypes = {
-  row: PropTypes.number.isRequired,
-  column: PropTypes.number.isRequired,
-  value: PropTypes.string,
-};
-
 const Tile = ({
   row, column, value, clickHandler,
 }) => (
   <StyledButton onClick={() => clickHandler(row, column)}>
-    {value == null ? <TileInfo row={row} column={column} value={value} /> : value}
+    {value}
+    {/* {value == null ? (
+      <TileInfo row={row} column={column} value={value} />
+    ) : (
+      value
+    )} */}
   </StyledButton>
 );
 
