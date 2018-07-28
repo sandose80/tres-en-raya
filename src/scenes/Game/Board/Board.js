@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TileRow from './TileRow';
 
 const Board = ({ rows }) => (
-  <Fragment>{rows.map(values => <TileRow rowValues={values} />)}</Fragment>
+  <Fragment>{rows.map((row, index) => <TileRow row={index} values={row} />)}</Fragment>
 );
 
 Board.propTypes = {

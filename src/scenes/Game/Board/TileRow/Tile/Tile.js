@@ -12,14 +12,21 @@ const StyledButton = styled.button`
   margin-right: 16px;
   margin-bottom: 16px;
 
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
 `;
 
-const Tile = ({ value }) => <StyledButton>{value}</StyledButton>;
+const Tile = ({ row, column, value }) => (
+  <StyledButton>
+    R:{row}, C:{column}, V:{value}
+  </StyledButton>
+);
 
 Tile.propTypes = {
+  row: PropTypes.number.isRequired,
+  column: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
 };
 

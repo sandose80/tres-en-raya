@@ -9,12 +9,15 @@ const StyledTileRow = styled.div`
   display: table;
 `;
 
-const TileRow = ({ rowValues }) => (
-  <StyledTileRow>{rowValues.map(v => <Tile value={v} />)}</StyledTileRow>
+const TileRow = ({ row, values }) => (
+  <StyledTileRow>
+    {values.map((value, index) => <Tile row={row} column={index} value={value} />)}
+  </StyledTileRow>
 );
 
 TileRow.propTypes = {
-  rowValues: PropTypes.arrayOf(PropTypes.number).isRequired,
+  row: PropTypes.number.isRequired,
+  values: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default TileRow;
