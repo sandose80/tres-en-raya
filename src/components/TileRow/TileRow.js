@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Tile } from '..';
 
 const StyledTileRow = styled.div`
@@ -8,12 +9,12 @@ const StyledTileRow = styled.div`
   display: table;
 `;
 
-const TileRow = () => (
-  <StyledTileRow>
-    <Tile />
-    <Tile />
-    <Tile />
-  </StyledTileRow>
+const TileRow = ({ rowValues }) => (
+  <StyledTileRow>{rowValues.map(v => <Tile value={v} />)}</StyledTileRow>
 );
+
+TileRow.propTypes = {
+  rowValues: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
 
 export default TileRow;

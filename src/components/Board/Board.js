@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { TileRow } from '..';
 
-const Board = () => (
-  <Fragment>
-    <TileRow />
-    <TileRow />
-    <TileRow />
-  </Fragment>
+const Board = ({ rows }) => (
+  <Fragment>{rows.map(values => <TileRow rowValues={values} />)}</Fragment>
 );
+
+Board.propTypes = {
+  rows: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default Board;

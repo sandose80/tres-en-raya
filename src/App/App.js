@@ -13,13 +13,14 @@ injectGlobal`
 class App extends Component {
   state = {
     appTitle: 'Tres en Raya',
+    board: [['X', null, 'X'], ['X', 'X', 'X'], ['X', 'X', 'X']],
   };
   render() {
     return (
       <Main>
         <Header appTitle={this.state.appTitle} />
         <Contents>
-          <Game />
+          <Game board={this.state.board} />
         </Contents>
       </Main>
     );
