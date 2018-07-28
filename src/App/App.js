@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
 import { Main, Header, Contents } from '../layout';
-import { Cell } from '../components';
+import { Tile, Board } from '../components';
 
 injectGlobal`
   ${normalize()};
@@ -17,9 +17,7 @@ class App extends Component {
         <Main>
           <Header appTitle="Tres en Raya" />
           <Contents>
-            <Cell />
-            <Cell />
-            <Cell />
+            <Board />
           </Contents>
         </Main>
       </div>

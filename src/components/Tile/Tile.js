@@ -16,6 +16,6 @@ const StyledButton = styled.button`
   text-align: center;
 `;
 
-const Cell = () => <StyledButton>X</StyledButton>;
+const Tile = () => <StyledButton>X</StyledButton>;
 
-export default Cell;
+export default Tile;
