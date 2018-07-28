@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { TileRow } from '..';
+import TileRow from './TileRow';
 
 const Board = ({ rows }) => (
   <Fragment>{rows.map(values => <TileRow rowValues={values} />)}</Fragment>

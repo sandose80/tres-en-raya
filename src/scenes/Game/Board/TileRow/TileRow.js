@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Tile } from '..';
+import Tile from './Tile';
 
 const StyledTileRow = styled.div`
   clear: both;

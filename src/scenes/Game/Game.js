@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Board } from '../../components';
+import Board from './Board';
 
 const Game = ({ board }) => <Board rows={board} />;
 
