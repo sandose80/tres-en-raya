@@ -12,14 +12,20 @@ const StyledTileRow = styled.div`
 const TileRow = ({ row, values, clickHandler }) => (
   <StyledTileRow>
     {values.map((value, index) => (
-      <Tile row={row} column={index} value={value} clickHandler={clickHandler} />
+      <Tile
+        key={row * 10 + index}
+        row={row}
+        column={index}
+        value={value}
+        clickHandler={clickHandler}
+      />
     ))}
   </StyledTileRow>
 );
 
 TileRow.propTypes = {
   row: PropTypes.number.isRequired,
-  values: PropTypes.arrayOf(PropTypes.number).isRequired,
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
   clickHandler: PropTypes.func.isRequired,
 };
 

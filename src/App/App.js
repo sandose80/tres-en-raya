@@ -19,12 +19,24 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  getVoidTilesCount(board) {
+    const voidCount = board.reduce(
+      (prev, curr) => prev + curr.reduce((acc, val) => acc + (val == null ? 1 : 0), 0),
+      0,
+    );
+    return voidCount;
+  }
+
   handleClick(row, column) {
     const board = this.state.board.slice();
     const { player } = this.state;
     board[row][column] = player;
+    const nextPlayer = player === 'X' ? 'O' : 'X';
+    const voidCount = this.getVoidTilesCount(board);
     this.setState({
       board,
+      player: nextPlayer,
+      isGameOver: voidCount === 0,
     });
   }
 

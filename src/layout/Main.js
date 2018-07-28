@@ -8,7 +8,7 @@ const StyledFlex = styled(Flex)``;
 const Main = ({ children }) => <StyledFlex flexDirection="column">{children}</StyledFlex>;
 
 Main.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Main;
