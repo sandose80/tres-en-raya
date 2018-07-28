@@ -3,6 +3,7 @@ import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
 import { Main, Header, Contents } from '../layout';
 import { Game } from '../scenes';
+import { initialState } from '../store';
 
 const APP_TITLE = 'Tres en Raya';
 
@@ -13,11 +14,7 @@ injectGlobal`
 `;
 
 class App extends Component {
-  state = {
-    board: [['X', null, 'X'], ['X', 'X', 'X'], ['X', 'X', 'X']],
-    player: 'O',
-    isGameOver: true,
-  };
+  state = initialState;
   render() {
     return (
       <Main>
