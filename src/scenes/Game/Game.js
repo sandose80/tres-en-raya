@@ -12,14 +12,18 @@ const StyledGameFrame = styled.div`
 `;
 
 const Game = ({
-  board, player, isGameOver, clickHandler,
+  board, player, isGameOver, clickHandler, resetHandler,
 }) => (
   <StyledGameFrame>
     <Column>
       <Board rows={board} clickHandler={clickHandler} />
     </Column>
     <Column>
-      <InfoBar currentPlayer={player} isGameOver={isGameOver} />
+      <InfoBar
+        currentPlayer={player}
+        isGameOver={isGameOver}
+        resetHandler={resetHandler}
+      />
     </Column>
   </StyledGameFrame>
 );
@@ -29,6 +33,7 @@ Game.propTypes = {
   player: PropTypes.string.isRequired,
   isGameOver: PropTypes.bool.isRequired,
   clickHandler: PropTypes.func.isRequired,
+  resetHandler: PropTypes.func.isRequired,
 };
 
 export default Game;
