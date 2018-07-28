@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Board from './Board';
 
-const Game = ({ board }) => <Board rows={board} />;
+import { Column } from '../../components';
+
+const StyledGameFrame = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Game = ({ board }) => (
+  <StyledGameFrame>
+    <Column>
+      <Board rows={board} />
+    </Column>
+    <Column>Barra info</Column>
+  </StyledGameFrame>
+);
 
 Game.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,

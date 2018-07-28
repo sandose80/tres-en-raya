@@ -8,7 +8,7 @@ const StyledBox = styled(Box)`
 `;
 
 const Contents = ({ children }) => (
-  <StyledBox px={4} py={4}>
+  <StyledBox px={0} py={4}>
     {children}
   </StyledBox>
 );
