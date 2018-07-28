@@ -11,19 +11,21 @@ const StyledGameFrame = styled.div`
   flex-direction: row;
 `;
 
-const Game = ({ board }) => (
+const Game = ({ board, player, isGameOver }) => (
   <StyledGameFrame>
     <Column>
       <Board rows={board} />
     </Column>
     <Column>
-      <InfoBar currentPlayer="Jero" isGameOver />
+      <InfoBar currentPlayer={player} isGameOver={isGameOver} />
     </Column>
   </StyledGameFrame>
 );
 
 Game.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  player: PropTypes.string.isRequired,
+  isGameOver: PropTypes.bool.isRequired,
 };
 
 export default Game;

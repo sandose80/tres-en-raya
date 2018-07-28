@@ -4,6 +4,8 @@ import { normalize } from 'polished';
 import { Main, Header, Contents } from '../layout';
 import { Game } from '../scenes';
 
+const APP_TITLE = 'Tres en Raya';
+
 injectGlobal`
   ${normalize()};
   * { box-sizing: border-box }
@@ -12,15 +14,20 @@ injectGlobal`
 
 class App extends Component {
   state = {
-    appTitle: 'Tres en Raya',
     board: [['X', null, 'X'], ['X', 'X', 'X'], ['X', 'X', 'X']],
+    player: 'O',
+    isGameOver: true,
   };
   render() {
     return (
       <Main>
-        <Header appTitle={this.state.appTitle} />
+        <Header appTitle={APP_TITLE} />
         <Contents>
-          <Game board={this.state.board} />
+          <Game
+            board={this.state.board}
+            player={this.state.player}
+            isGameOver={this.state.isGameOver}
+          />
         </Contents>
       </Main>
     );
