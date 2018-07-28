@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Board from './Board';
+import InfoBar from './InfoBar';
 
 import { Column } from '../../components';
 
@@ -15,7 +16,9 @@ const Game = ({ board }) => (
     <Column>
       <Board rows={board} />
     </Column>
-    <Column>Barra info</Column>
+    <Column>
+      <InfoBar />
+    </Column>
   </StyledGameFrame>
 );
 
