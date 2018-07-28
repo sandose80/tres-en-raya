@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
 import { Main, Header, Contents } from '../layout';
-import { Tile, Board } from '../components';
+import { Game } from '../scenes';
 
 injectGlobal`
   ${normalize()};
@@ -11,16 +11,17 @@ injectGlobal`
 `;
 
 class App extends Component {
+  state = {
+    appTitle: 'Tres en Raya',
+  };
   render() {
     return (
-      <div>
-        <Main>
-          <Header appTitle="Tres en Raya" />
-          <Contents>
-            <Board />
-          </Contents>
-        </Main>
-      </div>
+      <Main>
+        <Header appTitle={this.state.appTitle} />
+        <Contents>
+          <Game />
+        </Contents>
+      </Main>
     );
   }
 }
