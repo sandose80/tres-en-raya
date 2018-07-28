@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Board from './Board';
@@ -17,7 +17,7 @@ const Game = ({ board }) => (
       <Board rows={board} />
     </Column>
     <Column>
-      <InfoBar />
+      <InfoBar currentPlayer="Jero" isGameOver />
     </Column>
   </StyledGameFrame>
 );
