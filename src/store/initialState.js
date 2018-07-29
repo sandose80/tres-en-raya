@@ -1,7 +1,5 @@
-const initialState = {
-  board: [[null, null, null], [null, null, null], [null, null, null]],
-  player: 'X',
-  isGameOver: false,
-};
+import { gameInitialState } from './game';
 
-export default initialState;
+export default {
+  game: gameInitialState,
+};

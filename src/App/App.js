@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Provider as StoreProvider } from 'react-redux';
 import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
 import { Main, Header, Contents } from '../layout';
 import { Game } from '../scenes';
-import { initialState } from '../store';
+import initialState from '../store/initialState';
+
+import store from '../store';
 
 const APP_TITLE = 'Tres en Raya';
 
@@ -15,7 +18,7 @@ injectGlobal`
 class App extends Component {
   constructor() {
     super();
-    this.state = initialState;
+    this.state = initialState.game;
     this.handleClick = this.handleClick.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -112,18 +115,20 @@ class App extends Component {
   render() {
     const { board, player, isGameOver } = this.state;
     return (
-      <Main>
-        <Header appTitle={APP_TITLE} />
-        <Contents>
-          <Game
-            board={board}
-            player={player}
-            isGameOver={isGameOver}
-            clickHandler={this.handleClick}
-            resetHandler={this.handleReset}
-          />
-        </Contents>
-      </Main>
+      <StoreProvider store={store}>
+        <Main>
+          <Header appTitle={APP_TITLE} />
+          <Contents>
+            <Game
+              board={board}
+              player={player}
+              isGameOver={isGameOver}
+              clickHandler={this.handleClick}
+              resetHandler={this.handleReset}
+            />
+          </Contents>
+        </Main>
+      </StoreProvider>
     );
   }
 }
