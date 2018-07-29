@@ -1,14 +1,17 @@
+// src/layout/Header.js
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DiceThree } from 'styled-icons/fa-solid';
 
+// Estilos para construir la cabecera
+
 const StyledHeader = styled.header`
-  background: yellow;
+  background: darkgray;
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  /* justify-content: space-between; */
 `;
 
 const StyledLogo = styled(DiceThree)`
@@ -22,6 +25,9 @@ const StyledH1 = styled.h1`
   font-size: 18px;
 `;
 
+// Componente para la cabecera de la aplicación;
+// incluye un logo y un título
+
 const Header = ({ appTitle }) => (
   <StyledHeader>
     <StyledLogo />
@@ -29,8 +35,12 @@ const Header = ({ appTitle }) => (
   </StyledHeader>
 );
 
+// PropTypes
+
 Header.propTypes = {
   appTitle: PropTypes.string.isRequired,
 };
+
+// Exports
 
 export default Header;

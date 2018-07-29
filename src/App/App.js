@@ -1,20 +1,43 @@
+// src/App/App.js
+
 import React, { Component } from 'react';
-import { Provider as StoreProvider } from 'react-redux';
 import { injectGlobal } from 'styled-components';
 import { normalize } from 'polished';
-import { Main, Header, Contents } from '../layout';
-import { Game } from '../scenes';
-import initialState from '../store/initialState';
 
+// Store y Provider para Redux
+import { Provider as StoreProvider } from 'react-redux';
 import store from '../store';
 
+// Componentes de la platilla de la aplicación
+
+import { Main, Header, Contents } from '../layout';
+
+// Escenas de la aplicación
+
+import { Game } from '../scenes';
+
+// Estado inicial
+// TODO: eliminar cuando se refactorice para Redux
+import initialState from '../store/initialState';
+
+// Algunas constantes
+// TODO: sacarlas a un fichero de constantes
 const APP_TITLE = 'Tres en Raya';
+
+// Normalizar la presentación en distintos navegadores;
+// elimina los márgenes hasta el borde de la ventana
 
 injectGlobal`
   ${normalize()};
   * { box-sizing: border-box }
   body { margin: 0 }
 `;
+
+// Componente principal (raíz) de la aplicación
+
+// TODO: sacar toda la funcionalidad cuando se refactorice
+// utilizando Redux; cada handler y elemento del estado
+// será declarado/usado en los componentes que lo utilicen
 class App extends Component {
   constructor() {
     super();
@@ -23,6 +46,13 @@ class App extends Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
+  // Método de utilidad para saber si ya se ha llenado
+  // el tablero y, por tanto, ya no se puede seguir jugando;
+  // habrá que llamar a getWinner() para determinar
+  // quien ha sido el ganador o si ha habido empate;
+
+  // TODO: Mover al componente Tile
+
   getVoidTilesCount(board) {
     const voidCount = board.reduce(
       (prev, curr) => prev + curr.reduce((acc, val) => acc + (val == null ? 1 : 0), 0),
@@ -30,6 +60,13 @@ class App extends Component {
     );
     return voidCount;
   }
+
+  // Método de utilidad para determinar si ya hay un ganador;
+  // se comprueban todas las combinaciones posibles por fuerza bruta;
+
+  // TODO: refactorizar para dar soporte futuro a tableros n x n
+
+  // TODO: Mover al componente Tile
 
   getWinner(board) {
     if (
@@ -76,6 +113,21 @@ class App extends Component {
     return null;
   }
 
+  // Handler para cuando se hace click en una celda
+  // del tablero;
+  // se realizan varias cosas:
+  // - comprueba si se puede seguir jugando
+  // - impide que se pueda volver a jugar una celda
+  //   que ya ha sido jugado por el otro jugador
+  // - comprueba si ya ha habido un ganador
+  // - actualiza el valor de una celda
+
+  // TODO: este método hace demasiadas cosas e incumple
+  // el principio SRP (Single Responsibility Principle);
+  // refactorizar en varios métodos de utilidad más pequeños;
+
+  // TODO: Mover al componente Tile
+
   handleClick(row, column) {
     const newBoard = this.state.board.slice();
     const { player } = this.state;
@@ -104,6 +156,11 @@ class App extends Component {
     });
   }
 
+  // Handler para cuando se hace clic en el botón de
+  // reiniciar el juego;
+
+  // TODO: Mover al componente GameStatus
+
   handleReset() {
     this.setState({
       board: [[null, null, null], [null, null, null], [null, null, null]],
@@ -111,6 +168,11 @@ class App extends Component {
       isGameOver: false,
     });
   }
+
+  // Renderizar el componente
+
+  // TODO: una vez movidos los métodos e implementado Redux,
+  // convertir este componente en un componente funcional
 
   render() {
     const { board, player, isGameOver } = this.state;
@@ -132,5 +194,7 @@ class App extends Component {
     );
   }
 }
+
+// Exports
 
 export default App;

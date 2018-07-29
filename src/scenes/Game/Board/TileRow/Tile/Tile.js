@@ -1,22 +1,12 @@
+// src/scenes/Game/Board/TileRow/Tile/Tile.js
+
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// const StyledTileInfo = styled.p`
-//   font-size: 14px;
-// `;
-
-// const TileInfo = ({ row, column, value }) => (
-//   <StyledTileInfo>
-//     R: {row}, C: {column}, V: {value}
-//   </StyledTileInfo>
-// );
-
-// TileInfo.propTypes = {
-//   row: PropTypes.number.isRequired,
-//   column: PropTypes.number.isRequired,
-//   value: PropTypes.string,
-// };
+// Celda por defecto vacía;
+// contiene el estilo base para las celdas
+// específicas para los jugadores
 
 const StyledButton = styled.button`
   background: #fff;
@@ -33,18 +23,47 @@ const StyledButton = styled.button`
   text-align: center;
 `;
 
+// Celdas de color para los jugadores
+
+const StyledBlueButton = styled(StyledButton)`
+  background: blue;
+`;
+
+const StyledRedButton = styled(StyledButton)`
+  background: red;
+`;
+
+// Componente para la celda del tablero
+
 const Tile = ({
   row, column, value, clickHandler,
-}) => (
-  <StyledButton onClick={() => clickHandler(row, column)}>
-    {value}
-    {/* {value == null ? (
-      <TileInfo row={row} column={column} value={value} />
-    ) : (
-      value
-    )} */}
-  </StyledButton>
-);
+}) => {
+  if (value === 'X') {
+    return (
+      <StyledRedButton onClick={() => clickHandler(row, column)}>
+        {value}
+      </StyledRedButton>
+    );
+  }
+  if (value === 'O') {
+    return (
+      <StyledBlueButton onClick={() => clickHandler(row, column)}>
+        {value}
+      </StyledBlueButton>
+    );
+  }
+  return (
+    <StyledButton onClick={() => clickHandler(row, column)}>
+      {value}
+    </StyledButton>
+  );
+};
+
+// TypeProps
+
+Tile.defaultProps = {
+  value: '-',
+};
 
 Tile.propTypes = {
   row: PropTypes.number.isRequired,
@@ -52,5 +71,7 @@ Tile.propTypes = {
   value: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
 };
+
+// Exports
 
 export default Tile;

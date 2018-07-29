@@ -1,3 +1,5 @@
+// src/store/reducers.js
+
 import { combineReducers } from 'redux';
 import { gameReducer } from './game';
 
